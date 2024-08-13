@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+                 package user;
+service UserService {
+ rpc createUser (UserCreateInput) returns (User) {}
+rpc users (findManyParams) returns (stream User) {}
+rpc user (UserWhereUniqueInput) returns (User) {}
+rpc updateUser (UserUpdateInput) returns (User) {}
+rpc deleteUser (UserWhereUniqueInput) returns (User) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream Comment) {}
+rpc updateUser (CommentParams) returns (stream Comment) {}
+rpc connectUser (CommentParams) returns (Comment) {}
+rpc disconnectUser (CommentParams) returns (Comment) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream Post) {}
+rpc updateUser (PostParams) returns (stream Post) {}
+rpc connectUser (PostParams) returns (Post) {}
+rpc disconnectUser (PostParams) returns (Post) {} 
+ }
+message UserCreateInput {
+repeated Comment comments = 1;
+string createdAt = 2;
+string email = 3;
+string firstName = 4;
+string id = 5;
+string lastName = 6;
+string password = 7;
+repeated Post posts = 8;
+repeated string roles = 9;
+string updatedAt = 10;
+string username = 11;
+};
+message User {
+repeated Comment comments = 1;
+string createdAt = 2;
+string email = 3;
+string firstName = 4;
+string id = 5;
+string lastName = 6;
+string password = 7;
+repeated Post posts = 8;
+repeated string roles = 9;
+string updatedAt = 10;
+string username = 11;
+};
+message UserWhereUniqueInput {
+repeated Comment comments = 1;
+string createdAt = 2;
+string email = 3;
+string firstName = 4;
+string id = 5;
+string lastName = 6;
+string password = 7;
+repeated Post posts = 8;
+repeated string roles = 9;
+string updatedAt = 10;
+string username = 11;
+};
+message UserUpdateInput {
+repeated Comment comments = 1;
+string createdAt = 2;
+string email = 3;
+string firstName = 4;
+string id = 5;
+string lastName = 6;
+string password = 7;
+repeated Post posts = 8;
+repeated string roles = 9;
+string updatedAt = 10;
+string username = 11;
+};
+message findManyParams {
+
+};
+message Comment {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message CommentWhereUniqueInput {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message CommentParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+CommentWhereUniqueInput commentWhereUniqueInput = 2;
+};
+message Post {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+bool published = 4;
+string title = 5;
+string updatedAt = 6;
+};
+message PostWhereUniqueInput {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+bool published = 4;
+string title = 5;
+string updatedAt = 6;
+};
+message PostParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+PostWhereUniqueInput postWhereUniqueInput = 2;
+};
